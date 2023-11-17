@@ -134,8 +134,9 @@ jobs:
         df -hT
         
     - name: SSH远程连接（make menuconfig）
-      if: ssh== 'true'
+      if: env.SSH_ACTION == 'true'
       uses: danshui-git/debugger-action@main
+
       
     - name: Compile the firmware
       working-directory: ./openwrt
