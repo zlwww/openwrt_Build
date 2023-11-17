@@ -131,7 +131,11 @@ jobs:
             rm -rf staging_dir/!(*${{ env.MTARGET }}*|host|hostpkg) build_dir/!(*${{ env.MTARGET }}*|host|hostpkg)
         fi
         df -hT
-
+        
+    - name: SSH远程连接（make menuconfig）
+      if: ssh== 'true'
+      uses: danshui-git/debugger-action@main
+      
     - name: Compile the firmware
       working-directory: ./openwrt
       run: |
